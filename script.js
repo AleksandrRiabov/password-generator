@@ -104,9 +104,35 @@ function getPasswordOptions() {
 
   return options;
 
+  //Ask user for password length.
+  function promptPwdLength() {
+    let flag = false;
+    while (!flag) {
+      const userInput = prompt("Please enter the length of the password(between 10 and 64): ");
+      options.passwordLen = parseInt(userInput);
+
+      //If clicked not to generate password
+      if (userInput === null) {
+        flag = true;
+      }
+
+      // Validate user input and stop the loop/asking if okay.
+      if (options.passwordLen.toString().length < userInput?.length) {
+        alert("It must be a number!");
+      } else if (options.passwordLen < 10 || options.passwordLen > 64) {
+        alert("Please enter the number between 10 and 64");
+      } else if (!userInput && userInput !== null) {
+        alert('Can not be empty!');
+      }
+      else {
+        flag = true;
+      }
+    }
+  }
+
   //Ask for the options
   function promptPwdOptions() {
-    //If clicked not to generate password
+    //If user press cancel (not to generate password) at the first question
     if (!options.passwordLen) return;
 
     let flag = false;
@@ -124,27 +150,6 @@ function getPasswordOptions() {
         options.numeric ||
         options.specialCharacters;
       if (!flag) alert("Please choose at least 1 security option.");
-    }
-  }
-
-  //Ask user for password length.
-  function promptPwdLength() {
-    let flag = false;
-    while (!flag) {
-      const userInput = prompt("Please enter the length of the password(between 10 and 64): ");
-      options.passwordLen = parseInt(userInput);
-
-      //If clicked not to generate password
-      if (options.passwordLen === null) flag = true;
-
-      // Validate user input and stop the loop/asking if okay.
-      if (options.passwordLen.toString().length < userInput?.length) {
-        alert("It must be a number!");
-      } else if (options.passwordLen < 10 || options.passwordLen > 64) {
-        alert("Please enter the number between 10 and 64");
-      } else {
-        flag = true;
-      }
     }
   }
 }
