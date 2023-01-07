@@ -118,10 +118,12 @@ function getPasswordOptions() {
       }
 
       // Validate user input and stop the loop/asking if okay.
-      if (options.passwordLen.toString().length < userInput?.length || isNaN(options.passwordLen)) {
+      if (options.passwordLen.toString().length < userInput?.length || isNaN(userInput)) {
         alert("It must be a number!");
       } else if (options.passwordLen < 10 || options.passwordLen > 64) {
         alert("Please enter the number between 10 and 64");
+      } else if (!userInput || !userInput.split(" ").join("")) {
+        alert('Can not be empty')
       } else {
         flag = true;
       }
