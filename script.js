@@ -157,7 +157,35 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
-  
+  const options = getPasswordOptions();
+  const password = [];
+  const selectedOptionsArr = [];
+
+  // Make sure password includes at least one character from selected option.
+  //Push selected options array in to new array
+  if (options.lowerCase) {
+    password.push(getRandom(lowerCasedCharacters));
+    selectedOptionsArr.push(lowerCasedCharacters);
+  }
+  if (options.numeric) {
+    password.push(getRandom(numericCharacters));
+    selectedOptionsArr.push(numericCharacters);
+  }
+  if (options.upperCase) {
+    password.push(getRandom(upperCasedCharacters));
+    selectedOptionsArr.push(upperCasedCharacters);
+  }
+  if (options.specialCharacters) {
+    password.push(getRandom(specialCharacters));
+    selectedOptionsArr.push(specialCharacters);
+  }
+
+  //Run remaining password length times, and push random character from random option array
+  for (let i = password.length; i < options.passwordLen; i++) {
+    const randomIndex = Math.floor(Math.random() * selectedOptionsArr.length);
+    password.push(getRandom(selectedOptionsArr[randomIndex]));
+  }
+  return password.join("");
 }
 
 // Get references to the #generate element
