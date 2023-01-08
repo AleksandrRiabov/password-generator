@@ -27,6 +27,9 @@ or at least one of the options below:
 ## Credits
 [Aleksandr Riabov](https://github.com/AleksandrRiabov) :clap:
 
+[mihacuo](https://github.com/mihacuo) :clap:
+
+
 ## Technologies used
 
 ![badmath](https://img.shields.io/badge/-CSS-blue)
