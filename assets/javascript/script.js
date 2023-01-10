@@ -1,3 +1,5 @@
+import { shuffleArray, getRandom } from "./helpers.js";
+
 // Array of special characters to be included in password
 var specialCharacters = [
   "@",
@@ -154,12 +156,6 @@ function getPasswordOptions() {
   }
 }
 
-// Function for getting a random element from an array
-function getRandom(arr) {
-  const randomIndex = Math.floor(Math.random() * arr.length);
-  return arr[randomIndex];
-}
-
 // Function to generate password with user input
 function generatePassword() {
   const options = getPasswordOptions();
@@ -190,7 +186,8 @@ function generatePassword() {
     const randomIndex = Math.floor(Math.random() * selectedOptionsArr.length);
     password.push(getRandom(selectedOptionsArr[randomIndex]));
   }
-  return password.join("");
+
+  return shuffleArray(password).join("");
 }
 
 // Get references to the #generate element
