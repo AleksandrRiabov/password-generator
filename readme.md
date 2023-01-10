@@ -21,7 +21,7 @@ or at least one of the options below:
 
 
 ## Screenshot
-![alt text](/images/ScreenshotPwdGenerator.png)
+![alt text](assets/images/ScreenshotPwdGenerator.png)
 
 
 ## Credits
